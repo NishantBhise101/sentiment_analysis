@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sentiment Analysis</title>
+    <style>
+        .image-container {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+        .image-container img {
+            width: 100px;
+            height: 100px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        .image-container img.selected {
+            transform: scale(1.2);
+            border: 2px solid blue;
+        }
+        #selected-image-name {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Welcome to Sentiment Analysis</h1>
+
+    <div class="image-container">
+        <img id="youtube" src="https://wallpapers.com/images/hd/inverted-white-on-red-2048x1152-youtube-xeesfq4arwt46vts.jpg" alt="YouTube">
+        <img id="linkedin" src="linkedin.png" alt="LinkedIn">
+        <img id="reddit" src="reddit.png" alt="Reddit">
+        <img id="instagram" src="instagram.png" alt="Instagram">
+        <img id="x" src="x.png" alt="X (formerly Twitter)">
+    </div>
+
+    <div id="selected-image-name">Selected Platform: None</div>
+
+    <script>
+        const images = document.querySelectorAll('.image-container img');
+        const selectedImageName = document.getElementById('selected-image-name');
+
+        images.forEach(image => {
+            image.addEventListener('dblclick', function() {
+                // Remove 'selected' class from all images
+                images.forEach(img => img.classList.remove('selected'));
+
+                // Add 'selected' class to the double-clicked image
+                image.classList.add('selected');
+
+                // Display the selected image's name
+                selectedImageName.textContent = 'Selected Platform: ' + image.alt;
+            });
+        });
+    </script>
+
+</body>
+</html>
